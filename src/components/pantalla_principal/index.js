@@ -90,7 +90,12 @@ class PantallaPrincipal extends React.Component {
           filterString: "",
         };
     }
+
+    componentDidMount() {
+        this.setState({serverData: fakeServerData });
+    }
     
+    /*
     componentDidMount() {
         setTimeout(() => {
           this.setState({
@@ -98,7 +103,8 @@ class PantallaPrincipal extends React.Component {
           });
         }, 1000);
     }
-    
+    */
+
     render() {
         return (
             <div className='contendor'>
