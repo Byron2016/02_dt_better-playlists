@@ -1,0 +1,62 @@
+:root {
+  --white: #fff;
+  --red: #ff0000;
+  --grey: #808080;
+  --blue: #0000ff;
+  --yellow: #ffff00;
+  --green: #00ff00;
+
+  --defaultValue: var(--grey);
+  --defaultTextColor: var(--white);
+
+  --stwhite: #fff;
+  --stred: #ff0000;
+  --stblue: #0000ff;
+  --stgreen: #00ff00;
+}
+
+/* CONTENEDOR */
+.contendor {
+  background: var(--defaultValue);
+  text-align: center;
+}
+
+.contendor__titulo {
+  font-size: 54px;
+  color: var(--defaultTextColor);
+}
+
+/* COMPONENTE AGGEREGATE */
+.aggregate {
+  background: var(--red);
+  color: var(--defaultTextColor);
+  width: 40%;
+  display: inline-block;
+}
+
+.aggregate__titulo {
+  color: var(--defaultTextColor);
+}
+
+/* COMPONENTE FILTER */
+
+.filter {
+  background: var(--yellow);
+  color: var(--defaultTextColor);
+}
+
+.filter__titulo {
+  color: var(--defaultTextColor);
+}
+
+/* COMPONENTE PLAYLIST */
+.playlist {
+  background: var(--green);
+  color: var(--defaultTextColor);
+  width: 20%;
+  display: inline-block;
+}
+
+.playlist__titulo {
+  color: var(--defaultTextColor);
+}

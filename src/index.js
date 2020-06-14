@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import PantallaPrincipal from './components/pantalla_principal';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PantallaPrincipal />
   </React.StrictMode>,
   document.getElementById('root')
 );

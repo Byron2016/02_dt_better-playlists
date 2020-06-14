@@ -1,0 +1,15 @@
+    ***************************************************************
+    **                                                           **
+    **                   02_dt_better-playlists                  **
+    **                                                           **
+    ***************************************************************
+- 02_dt_better-playlists
+	- TITULO: https://www.youtube.com/watch?v=rzk8n-4gMWs&list=PLqGj3iMvMa4LFqyGab_aR7M0zfQm2KTuX&index=13prototyping
+	- REFERENCIAS
+		- https://github.com/mpj/better-playlists/tree/3ab1533c29dd1d0c73f4ab5fc30111579d5bd521
+		- https://developer.spotify.com/documentation/
+		
+	- PASOS
+		- npx create-react-app 02_dt_better-playlists
+		- Hacer un template
+		- Extraer el access token 
