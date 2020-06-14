@@ -44,11 +44,32 @@ let fakeServerData = {
     },
   };
 
-class Aggregate extends React.Component {
+class PlayListCounter extends React.Component {
     render() {
         return (
-            <div className="aggregate">
-                <h2 className="aggregate__titulo">{this.props.playlists && this.props.playlists.length}</h2>
+            <div className="playlistcounter">
+                <h2 className="playlistcounter__titulo">{this.props.playlists.length} playlists</h2>
+            </div>
+        );
+    }
+}
+
+class HoursCounter extends React.Component {
+    render() {
+        /* 
+           sobre función reduce
+           https://www.youtube.com/watch?v=Wl98eZpkp-c
+        */
+        let allSongs = this.props.playlists.reduce( 
+            (songs, eachPlayList) => {
+                return songs.concat(eachPlayList.songs)
+            }, []);
+        let totalDuration = allSongs.reduce((sum, eachSong) => {
+            return (Math.round((sum + eachSong.duration) / 60))
+        }, []);
+        return (
+            <div className="hourcounter">
+                <h2 className="hourcounter__titulo">{totalDuration} hours</h2>
             </div>
         );
     }
@@ -90,12 +111,12 @@ class PantallaPrincipal extends React.Component {
           filterString: "",
         };
     }
-
+    /*
     componentDidMount() {
         this.setState({serverData: fakeServerData });
     }
+    */
     
-    /*
     componentDidMount() {
         setTimeout(() => {
           this.setState({
@@ -103,24 +124,25 @@ class PantallaPrincipal extends React.Component {
           });
         }, 1000);
     }
-    */
+
 
     render() {
         return (
             <div className='contendor'>
-                <h1 className="contendor__titulo">{
-                    this.state.serverData.user &&
-                    this.state.serverData.user.name}'s PlayList
-                </h1>
-                <Aggregate playlists={
-                    this.state.serverData.user &&
-                    this.state.serverData.user.playlists} />
-                <Aggregate />
-                <Filter />
-                <Playlist />
-                <Playlist />
-                <Playlist />
-                <Playlist />
+                {this.state.serverData.user ?
+                    <div>
+                        <h1 className="contendor__titulo">{this.state.serverData.user.name}'s PlayList</h1>
+                        <PlayListCounter playlists={this.state.serverData.user.playlists} />
+                        <HoursCounter playlists={this.state.serverData.user.playlists} />
+                        <Filter />
+                        <Playlist />
+                        <Playlist />
+                        <Playlist />
+                        <Playlist />
+                    </div>
+                    :
+                    <h1 className="contendor__titulo">Loading...</h1>
+                }
             </div>
         );
     }

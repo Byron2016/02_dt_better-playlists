@@ -26,15 +26,27 @@
   color: var(--defaultTextColor);
 }
 
-/* COMPONENTE AGGEREGATE */
-.aggregate {
+/* COMPONENTE PLAYLISTCOUNTER */
+.playlistcounter {
   background: var(--red);
   color: var(--defaultTextColor);
   width: 40%;
   display: inline-block;
 }
 
-.aggregate__titulo {
+.playlistcounter__titulo {
+  color: var(--defaultTextColor);
+}
+
+/* COMPONENTE HOURCOUNTER */
+.hourcounter {
+  background: var(--blue);
+  color: var(--defaultTextColor);
+  width: 40%;
+  display: inline-block;
+}
+
+.hourcounter__titulo {
   color: var(--defaultTextColor);
 }
 
