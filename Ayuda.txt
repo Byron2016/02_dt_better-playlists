@@ -14,18 +14,18 @@
 		- Hacer un template
 		- Extraer el access token 
 
-		- Deploy en heroku.com
-			- Conectarse por wed en https://www.heroku.com/
-			- Instalar localmente heroku CLI
-			- Se requiere "heroku buildpack for create-react-app github"
-				- https://blog.heroku.com/deploying-react-with-zero-configuration
-				- https://github.com/mars/create-react-app-buildpack
-					- heroku login
-					- heroku create dt-better-playlists-02 --buildpack mars/create-react-app
-					- git push heroku master
-					- heroku open
-					- https://dt-better-playlists-02.herokuapp.com/
-					- git remote -v: PARA VER LOS REPOSITORIOS HABILITADOS.
+		-  Deploy en heroku.com (para verse en internet)
+			-  Conectarse por wed en https://www.heroku.com/
+			-  Instalar localmente heroku CLI
+			-  Se requiere "heroku buildpack for create-react-app github"
+				-  https://blog.heroku.com/deploying-react-with-zero-configuration
+				-  https://github.com/mars/create-react-app-buildpack
+					-  heroku login
+					-  heroku create dt-better-playlists-02 --buildpack mars/create-react-app
+					-  git push heroku master
+					-  heroku open
+					-  https://dt-better-playlists-02.herokuapp.com/
+					-  git remote -v: PARA VER LOS REPOSITORIOS HABILITADOS.
 
 
 				- 
