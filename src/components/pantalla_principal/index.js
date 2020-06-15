@@ -91,7 +91,7 @@ class Playlist extends React.Component {
         return (
             <div className="playlist">
                 <img />
-                <h3 className="playlist__titulo">Playlist Name</h3>
+                <h3 className="playlist__titulo">{ this.props.playlist.name }</h3>
                 <ul>
                     <li>Song 1</li>
                     <li>Song 2</li>
@@ -135,10 +135,13 @@ class PantallaPrincipal extends React.Component {
                         <PlayListCounter playlists={this.state.serverData.user.playlists} />
                         <HoursCounter playlists={this.state.serverData.user.playlists} />
                         <Filter />
-                        <Playlist />
-                        <Playlist />
-                        <Playlist />
-                        <Playlist />
+                        
+                        {
+                            this.state.serverData.user.playlists.map(playlist => 
+                                <Playlist playlist={playlist} />
+                            )
+                        }
+                        
                     </div>
                     :
                     <h1 className="contendor__titulo">Loading...</h1>
