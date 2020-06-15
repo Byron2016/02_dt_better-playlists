@@ -6,7 +6,7 @@
   --yellow: #ffff00;
   --green: #00ff00;
 
-  --defaultValue: var(--grey);
+  --defaultBackgroundColor: var(--grey);
   --defaultTextColor: var(--white);
 
   --stwhite: #fff;
@@ -17,7 +17,7 @@
 
 /* CONTENEDOR */
 .contendor {
-  background: var(--defaultValue);
+  background: var(--defaultBackgroundColor);
   text-align: center;
 }
 
@@ -28,7 +28,7 @@
 
 /* COMPONENTE PLAYLISTCOUNTER */
 .playlistcounter {
-  background: var(--red);
+  background: var(--defaultBackgroundColor);
   color: var(--defaultTextColor);
   width: 40%;
   display: inline-block;
@@ -40,7 +40,7 @@
 
 /* COMPONENTE HOURCOUNTER */
 .hourcounter {
-  background: var(--blue);
+  background: var(--defaultBackgroundColor);
   color: var(--defaultTextColor);
   width: 40%;
   display: inline-block;
@@ -53,7 +53,7 @@
 /* COMPONENTE FILTER */
 
 .filter {
-  background: var(--yellow);
+  background: var(--defaultBackgroundColor);
   color: var(--defaultTextColor);
 }
 
@@ -63,7 +63,7 @@
 
 /* COMPONENTE PLAYLIST */
 .playlist {
-  background: var(--green);
+  background: var(--defaultBackgroundColor);
   color: var(--defaultTextColor);
   width: 20%;
   display: inline-block;

@@ -17,7 +17,7 @@ let fakeServerData = {
         {
           name: "Discover Weekly",
           songs: [
-            { name: "Beat It", duration: 1345 },
+            { name: "Imagine", duration: 1345 },
             { name: "Cannelloni Makaroni", duration: 1236 },
             { name: "Rosa helikopter", duration: 70000 },
           ]
@@ -27,7 +27,7 @@ let fakeServerData = {
           name: "Another playlist - the best!",
           songs: [
             { name: "Beat It", duration: 1345 },
-            { name: "Cannelloni Makaroni", duration: 1236 },
+            { name: "Hallelujah", duration: 1236 },
             { name: "Rosa helikopter", duration: 70000 },
           ]
         },
@@ -37,7 +37,7 @@ let fakeServerData = {
           songs: [
             { name: "Beat It", duration: 1345 },
             { name: "Cannelloni Makaroni", duration: 1236 },
-            { name: "Rosa helikopter", duration: 70000 },
+            { name: "Hej Hej Monika", duration: 70000 },
           ]
         },
       ],
@@ -88,14 +88,15 @@ class Filter extends React.Component {
 
 class Playlist extends React.Component {
     render() {
+        let playlist = this.props.playlist
         return (
             <div className="playlist">
                 <img />
-                <h3 className="playlist__titulo">{ this.props.playlist.name }</h3>
+                <h3 className="playlist__titulo">{ playlist.name }</h3>
                 <ul>
-                    <li>Song 1</li>
-                    <li>Song 2</li>
-                    <li>Song 3</li>
+                    {playlist.songs.map(song =>
+                        <li>{song.name}</li>
+                    )}
                 </ul>
             </div>
         );
@@ -127,14 +128,6 @@ class PantallaPrincipal extends React.Component {
 
 
     render() {
-        let playListElements = []
-        if (this.state.serverData.user) {
-            for (let i = 0; i < this.state.serverData.user.playlists.length; i++) {
-                let playlist = this.state.serverData.user.playlists[i]
-                playListElements.push(<Playlist playlist={playlist} />)
-            }
-        }
-
         return (
             <div className='contendor'>
                 {this.state.serverData.user ?
@@ -143,7 +136,9 @@ class PantallaPrincipal extends React.Component {
                         <PlayListCounter playlists={this.state.serverData.user.playlists} />
                         <HoursCounter playlists={this.state.serverData.user.playlists} />
                         <Filter />
-                        {playListElements}
+                        {this.state.serverData.user.playlists.map(playlist =>
+                            <Playlist playlist={playlist} />
+                        )}
                     </div>
                     :
                     <h1 className="contendor__titulo">Loading...</h1>
