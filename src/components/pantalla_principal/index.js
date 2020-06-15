@@ -127,6 +127,14 @@ class PantallaPrincipal extends React.Component {
 
 
     render() {
+        let playListElements = []
+        if (this.state.serverData.user) {
+            for (let i = 0; i < this.state.serverData.user.playlists.length; i++) {
+                let playlist = this.state.serverData.user.playlists[i]
+                playListElements.push(<Playlist playlist={playlist} />)
+            }
+        }
+
         return (
             <div className='contendor'>
                 {this.state.serverData.user ?
@@ -135,13 +143,7 @@ class PantallaPrincipal extends React.Component {
                         <PlayListCounter playlists={this.state.serverData.user.playlists} />
                         <HoursCounter playlists={this.state.serverData.user.playlists} />
                         <Filter />
-                        
-                        {
-                            this.state.serverData.user.playlists.map(playlist => 
-                                <Playlist playlist={playlist} />
-                            )
-                        }
-                        
+                        {playListElements}
                     </div>
                     :
                     <h1 className="contendor__titulo">Loading...</h1>
