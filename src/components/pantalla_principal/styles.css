@@ -44,6 +44,10 @@
   color: var(--defaultTextColor);
 }
 
+.playlistcounter__imagesUrl {
+  width: 60px;
+}
+
 /* COMPONENTE HOURCOUNTER */
 .hourcounter {
   background: var(--defaultBackgroundColor);

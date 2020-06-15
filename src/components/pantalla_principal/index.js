@@ -99,7 +99,7 @@ class Playlist extends React.Component {
     let playlist = this.props.playlist;
     return (
       <div className="playlist">
-        <img />
+        <img src={playlist.imageUrl} className="playlistcounter__imagesUrl" />
         <h3 className="playlist__titulo">{playlist.name}</h3>
         <ul>
           {playlist.songs.map((song) => (
@@ -167,28 +167,41 @@ class PantallaPrincipal extends React.Component {
       .then((response) => response.json())
       .then((data) => console.log(data));
 */
+    fetch("https://api.spotify.com/v1/me", {
+      headers: { Authorization: "Bearer " + accessToken },
+    })
+      .then((response) => response.json())
+      .then((data) =>
+        this.setState({
+          user: {
+            name: data.display_name,
+          },
+        })
+      );
+
     fetch("https://api.spotify.com/v1/me/playlists", {
       headers: { Authorization: "Bearer " + accessToken },
     })
       .then((response) => response.json())
       .then((data) =>
         this.setState({
-          serverData: {
-            user: {
-              playlists: data.items.map((item) => ({
-                name: item.name,
-                songs: [],
-              })),
-            },
-          },
+          playlists: data.items.map((item) => {
+            console.log(data.items);
+            return {
+              name: item.name,
+              //imageUrl: item.images.find((image) => image.width == 640).url,
+              imageUrl: item.images[0].url,
+              songs: [],
+            };
+          }),
         })
       );
   }
 
   render() {
     let playlistToRender =
-      this.state.serverData.user && this.state.serverData.user.playlists
-        ? this.state.serverData.user.playlists.filter((playlist) =>
+      this.state.user && this.state.playlists
+        ? this.state.playlists.filter((playlist) =>
             playlist.name
               .toLowerCase()
               .includes(this.state.filterString.toLowerCase())
@@ -197,13 +210,13 @@ class PantallaPrincipal extends React.Component {
 
     return (
       <div className="contendor">
-        {this.state.serverData.user ? (
+        {this.state.user ? (
           <div>
             <h1 className="contendor__titulo">
-              {this.state.serverData.user.name}'s PlayList
+              {this.state.user.name}'s PlayList
             </h1>
             <PlayListCounter playlists={playlistToRender} />
-            {/* <HoursCounter playlists={playlistToRender} /> */}
+            <HoursCounter playlists={playlistToRender} />
             <Filter
               onTextChange={(text) => {
                 // console.log(text);
