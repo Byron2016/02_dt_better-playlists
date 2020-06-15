@@ -28,4 +28,5 @@
 					-  git remote -v: PARA VER LOS REPOSITORIOS HABILITADOS.
 
 
-				- 
+				- https://www.youtube.com/watch?v=XZScIWYIkNw&list=PLqGj3iMvMa4LFqyGab_aR7M0zfQm2KTuX&index=11
+				min 2749

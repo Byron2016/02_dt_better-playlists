@@ -8,36 +8,35 @@ let fakeServerData = {
         {
           name: "My favorites",
           songs: [
-            { name: "Beat It", duration: 1345 },
-            { name: "Cannelloni Makaroni", duration: 1236 },
-            { name: "Rosa helikopter", duration: 70000 },
+            { name: "Beat It", duration: 1345},
+            { name: "Cannelloni Makaroni", duration: 1236},
+            { name: "Rosa helikopter", duration: 70000},
           ]
         },
   
         {
           name: "Discover Weekly",
           songs: [
-            { name: "Imagine", duration: 1345 },
-            { name: "Cannelloni Makaroni", duration: 1236 },
-            { name: "Rosa helikopter", duration: 70000 },
+            { name: "Imagine", duration: 1345},
+            { name: "Cannelloni Makaroni", duration: 1236},
+            { name: "Rosa helikopter", duration: 70000},
           ]
         },
   
         {
           name: "Another playlist - the best!",
           songs: [
-            { name: "Beat It", duration: 1345 },
-            { name: "Hallelujah", duration: 1236 },
-            { name: "Rosa helikopter", duration: 70000 },
+            { name: "Beat It", duration: 1345},
+            { name: "Hallelujah", duration: 1236},
+            { name: "Rosa helikopter", duration: 70000},
           ]
         },
   
         {
           name: "Playlist!",
           songs: [
-            { name: "Beat It", duration: 1345 },
-            { name: "Cannelloni Makaroni", duration: 1236 },
-            { name: "Hej Hej Monika", duration: 70000 },
+            { name: "Beat It", duration: 1345},
+            { name: "Cannelloni Makaroni", duration: 1236},
           ]
         },
       ],
@@ -65,11 +64,15 @@ class HoursCounter extends React.Component {
                 return songs.concat(eachPlayList.songs)
             }, []);
         let totalDuration = allSongs.reduce((sum, eachSong) => {
-            return (Math.round((sum + eachSong.duration) / 60))
-        }, []);
+            console.log (sum  + ' + ' + eachSong.duration);
+
+            return sum + eachSong.duration
+        }, 0);
         return (
             <div className="hourcounter">
-                <h2 className="hourcounter__titulo">{totalDuration} hours</h2>
+                <h2 className="hourcounter__titulo">
+                    {Math.round(totalDuration / 60)} hours
+                </h2>
             </div>
         );
     }
@@ -130,20 +133,25 @@ class PantallaPrincipal extends React.Component {
 
 
     render() {
+
+        let playlistToRender = this.state.serverData.user ? this.state.serverData.user.playlists
+        .filter(playlist =>
+            playlist.name.toLowerCase().includes(
+                this.state.filterString.toLowerCase())
+        ) : []
+        
         return (
             <div className='contendor'>
                 {this.state.serverData.user ?
                     <div>
                         <h1 className="contendor__titulo">{this.state.serverData.user.name}'s PlayList</h1>
-                        <PlayListCounter playlists={this.state.serverData.user.playlists} />
-                        <HoursCounter playlists={this.state.serverData.user.playlists} />
+                        <PlayListCounter playlists={playlistToRender} />
+                        <HoursCounter playlists={playlistToRender} />
                         <Filter onTextChange={text => {
                             // console.log(text);
                             this.setState({ filterString: text })
                         }} />
-                        {this.state.serverData.user.playlists.filter(playlist => 
-                            playlist.name.toLowerCase().includes(this.state.filterString.toLowerCase())
-                        ).map(playlist =>
+                        {playlistToRender.map(playlist =>
                             <Playlist playlist={playlist} />
                         )}
                     </div>
