@@ -147,26 +147,8 @@ class PantallaPrincipal extends React.Component {
       .then((data) => console.log(data));
     */
 
-    /*
-    console.log("con v1/me");
-    fetch("https://api.spotify.com/v1/me", {
-      headers: {
-        Authorization: "Bearer " + accessToken,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    if (!accessToken) return;
 
-    console.log("con v1/me/playlists");
-
-    fetch("https://api.spotify.com/v1/me/playlists", {
-      headers: {
-        Authorization: "Bearer " + accessToken,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-*/
     fetch("https://api.spotify.com/v1/me", {
       headers: { Authorization: "Bearer " + accessToken },
     })
@@ -207,7 +189,44 @@ class PantallaPrincipal extends React.Component {
               .includes(this.state.filterString.toLowerCase())
           )
         : [];
-
+    /*
+    return (
+      <div className="contendor">
+        {this.state.user ? (
+          <div>
+            <h1 className="contendor__titulo">
+              {this.state.user.name}'s PlayList
+            </h1>
+            <PlayListCounter playlists={playlistToRender} />
+            <HoursCounter playlists={playlistToRender} />
+            <Filter
+              onTextChange={(text) => {
+                // console.log(text);
+                this.setState({ filterString: text });
+              }}
+            />
+            {playlistToRender.map((playlist) => (
+              <Playlist playlist={playlist} />
+            ))}
+          </div>
+        ) : (
+          <div>
+            <h1 className="contendor__titulo">Loading...</h1>
+            <button
+                className="contenedor__boton"
+                onClick={() => {
+                  window.location = window.location.href.include('localhost')
+                    ? "http://localhost:8888/login"
+                    : "https://dt-better-playlists-02.herokuapp.com/"
+                }}
+            >
+              Sign in with Spotify
+            </button>
+          </div>
+        );
+      </div>
+    );
+    */
     return (
       <div className="contendor">
         {this.state.user ? (
@@ -232,7 +251,11 @@ class PantallaPrincipal extends React.Component {
             <h1 className="contendor__titulo">Loading...</h1>
             <button
               className="contenedor__boton"
-              onClick={() => (window.location = "http://localhost:8888/login")}
+              onClick={() => {
+                window.location = window.location.href.includes("localhost")
+                  ? "http://localhost:8888/login"
+                  : "https://dt-better-playlists-02.herokuapp.com/";
+              }}
             >
               Sign in with Spotify
             </button>
