@@ -217,7 +217,7 @@ class PantallaPrincipal extends React.Component {
               onClick={() => {
                 window.location = window.location.href.includes("localhost")
                   ? "http://localhost:8888/login"
-                  : "https://dt-better-playlists-02.herokuapp.com/login";
+                  : "https://dt-spotify-server-oauth-01.herokuapp.com/login";
               }}
             >
               Sign in with Spotify
