@@ -8,6 +8,8 @@
 	- REFERENCIAS
 		- https://github.com/mpj/better-playlists/tree/3ab1533c29dd1d0c73f4ab5fc30111579d5bd521
 		- https://developer.spotify.com/documentation/
+		- Promesas
+			- https://www.youtube.com/watch?v=2d7s3spWAzo
 		
 	- PASOS
 		- npx create-react-app 02_dt_better-playlists

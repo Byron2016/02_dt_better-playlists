@@ -189,44 +189,7 @@ class PantallaPrincipal extends React.Component {
               .includes(this.state.filterString.toLowerCase())
           )
         : [];
-    /*
-    return (
-      <div className="contendor">
-        {this.state.user ? (
-          <div>
-            <h1 className="contendor__titulo">
-              {this.state.user.name}'s PlayList
-            </h1>
-            <PlayListCounter playlists={playlistToRender} />
-            <HoursCounter playlists={playlistToRender} />
-            <Filter
-              onTextChange={(text) => {
-                // console.log(text);
-                this.setState({ filterString: text });
-              }}
-            />
-            {playlistToRender.map((playlist) => (
-              <Playlist playlist={playlist} />
-            ))}
-          </div>
-        ) : (
-          <div>
-            <h1 className="contendor__titulo">Loading...</h1>
-            <button
-                className="contenedor__boton"
-                onClick={() => {
-                  window.location = window.location.href.include('localhost')
-                    ? "http://localhost:8888/login"
-                    : "https://dt-better-playlists-02.herokuapp.com/"
-                }}
-            >
-              Sign in with Spotify
-            </button>
-          </div>
-        );
-      </div>
-    );
-    */
+
     return (
       <div className="contendor">
         {this.state.user ? (
@@ -254,7 +217,7 @@ class PantallaPrincipal extends React.Component {
               onClick={() => {
                 window.location = window.location.href.includes("localhost")
                   ? "http://localhost:8888/login"
-                  : "https://dt-better-playlists-02.herokuapp.com/";
+                  : "https://dt-better-playlists-02.herokuapp.com/login";
               }}
             >
               Sign in with Spotify
